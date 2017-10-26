@@ -3,6 +3,8 @@
     <string name="question">Question</string>
     <string name="check">Check</string>
     <string name="question_content">Which is the capital of Bhutan?</string>
+    <string name="correct">Very good!</string>
+    <string name="incorrect">Incorrect...</string>
 
     <array name="answers">
         <item>Ougadougou</item>
@@ -11,4 +13,7 @@
         <item>Antananarivo</item>
 
     </array>
+
+    <integer name="correct_answer">2</integer>
+
 </resources>

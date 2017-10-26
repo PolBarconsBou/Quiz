@@ -2,8 +2,12 @@ package edu.upc.eseiaat.pma.quiz;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class QuizActivity extends AppCompatActivity {
 
@@ -25,5 +29,27 @@ public class QuizActivity extends AppCompatActivity {
             RadioButton rb = (RadioButton) findViewById(ids_answers[i]);
             rb.setText(answers[i]);
         }
+
+        Button btn_check = (Button) findViewById(R.id.btn_check);
+        final int correct_answer = getResources().getInteger(R.integer.correct_answer);
+        final RadioGroup group = (RadioGroup) findViewById(R.id.answer_group);
+
+        btn_check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int id = group.getCheckedRadioButtonId();
+                int answer = -1;
+                for(int i = 0; i < ids_answers.length; i++){
+                    if (ids_answers[i] == id){
+                        answer = i;
+                    }
+                }
+                if (answer == correct_answer){
+                    Toast.makeText(QuizActivity.this, R.string.correct, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(QuizActivity.this, R.string.incorrect, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }
